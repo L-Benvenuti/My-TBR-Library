@@ -1,0 +1,19 @@
+{
+  "name": "capstone-project-4",
+  "version": "1.0.0",
+  "description": "My TBR Library",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luiza Benvenuti Hernandez",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.3"
+  }
+}
