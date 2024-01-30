@@ -6,6 +6,25 @@
     <title>My TBR Library</title>
 </head>
 <body>
-    Hello Hello
+    <!-- Title or Book area -->
+    <% if (locals.title) { %>
+        <img src="https://covers.openlibrary.org/b/id/<%= cover %>-M.jpg" />
+        <h1><%= title %></h1>
+        <h3><%= author %></h3>
+        <p><%= numberOfPages %> pages</p>
+    <% } else { %>
+        <h1>Next-Read Randomizer</h1>
+    <% } %>
+
+    <!-- Buttons/Form -->
+    <form method="POST">
+        <button type="submit" formaction="/all">All</button>
+        <button type="submit" formaction="/physical">Physical Library</button>
+        <button type="submit" formaction="/kindle">Kindle Library</button>
+        <button type="submit" formaction="/apple">Apple Library</button>
+    </form>
+    <footer>
+        <a href="https://openlibrary.org/">Open Library</a>
+    </footer>
 </body>
 </html>
