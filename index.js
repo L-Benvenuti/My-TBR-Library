@@ -24,10 +24,85 @@ app.post("/all", async (req, res) => {
         const pages = await axios.get(`https://openlibrary.org/search.json?q=${randomBook.work.title}&fields=*,availability&limit=1`);
 
         res.render("index.ejs", {
-            title: JSON.stringify(randomBook.work.title),
-            author: JSON.stringify(randomBook.work['author_names']),
-            numberOfPages: JSON.stringify(pages.data.docs[0]['number_of_pages_median']),
-            cover: JSON.stringify(randomBook.work['cover_id'])
+            title: randomBook.work.title,
+            author: randomBook.work['author_names'],
+            numberOfPages: pages.data.docs[0]['number_of_pages_median'],
+            cover: randomBook.work['cover_id']
+        })
+
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+// Physical library
+app.post("/physical", async (req, res) => {
+    try {
+        const result = await axios.get('https://openlibrary.org/people/luiza_benvenuti_hernandez/lists/OL246178L/seeds.json');
+        
+        //random index based of data/object length
+        const index = Math.floor(Math.random()*result.data.entries.length);
+        const randomBook = result.data.entries[index];
+
+        //in this case, the data from lists does not provide the info I want so I am making a search which will allow me to access that info
+        const moreResults = await axios.get(`https://openlibrary.org/search.json?q=${randomBook.title}&fields=*,availability&limit=1`);
+        const extraInfo = moreResults.data.docs[0];
+
+        res.render("index.ejs", {
+            title: randomBook.title,
+            author: extraInfo['author_name'],
+            numberOfPages: extraInfo['number_of_pages_median'],
+            cover: extraInfo['cover_i']
+        })
+
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+// Kindle library
+app.post("/kindle", async (req, res) => {
+    try {
+        const result = await axios.get('https://openlibrary.org/people/luiza_benvenuti_hernandez/lists/OL246176L/seeds.json');
+        
+        //random index based of data/object length
+        const index = Math.floor(Math.random()*result.data.entries.length);
+        const randomBook = result.data.entries[index];
+
+        //in this case, the data from lists does not provide the info I want so I am making a search which will allow me to access that info
+        const moreResults = await axios.get(`https://openlibrary.org/search.json?q=${randomBook.title}&fields=*,availability&limit=1`);
+        const extraInfo = moreResults.data.docs[0];
+
+        res.render("index.ejs", {
+            title: randomBook.title,
+            author: extraInfo['author_name'],
+            numberOfPages: extraInfo['number_of_pages_median'],
+            cover: extraInfo['cover_i']
+        })
+
+    } catch (error) {
+        console.log(error.message)
+    }
+});
+
+// Apple library
+app.post("/apple", async (req, res) => {
+    try {
+        const result = await axios.get('https://openlibrary.org/people/luiza_benvenuti_hernandez/lists/OL246177L/seeds.json');
+        
+        //random index based of data/object length
+        const index = Math.floor(Math.random()*result.data.entries.length);
+        const randomBook = result.data.entries[index];
+
+        //in this case, the data from lists does not provide the info I want so I am making a search which will allow me to access that info
+        const moreResults = await axios.get(`https://openlibrary.org/search.json?q=${randomBook.title}&fields=*,availability&limit=1`);
+        const extraInfo = moreResults.data.docs[0];
+
+        res.render("index.ejs", {
+            title: randomBook.title,
+            author: extraInfo['author_name'],
+            numberOfPages: extraInfo['number_of_pages_median'],
+            cover: extraInfo['cover_i']
         })
 
     } catch (error) {
