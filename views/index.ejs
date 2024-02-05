@@ -3,26 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>My TBR Library</title>
 </head>
 <body>
+    <main>
     <!-- Title or Book area -->
     <% if (locals.title) { %>
+        <div class="container">
         <img src="https://covers.openlibrary.org/b/id/<%= cover %>-M.jpg" />
-        <h1><%= title %></h1>
-        <h3><%= author %></h3>
-        <p><%= numberOfPages %> pages</p>
+        <div>
+            <h1><%= title %></h1>
+            <h3><%= author %></h3>
+            <p><%= numberOfPages %> pages</p>
+        </div>
+        </div>
     <% } else { %>
         <h1>Next-Read Randomizer</h1>
     <% } %>
 
     <!-- Buttons/Form -->
-    <form method="POST">
-        <button type="submit" formaction="/all">All</button>
-        <button type="submit" formaction="/physical">Physical Library</button>
-        <button type="submit" formaction="/kindle">Kindle Library</button>
-        <button type="submit" formaction="/apple">Apple Library</button>
-    </form>
+        <form method="POST">
+            <button type="submit" formaction="/all">All</button>
+            <button type="submit" formaction="/physical">Physical Library</button>
+            <button type="submit" formaction="/kindle">Kindle Library</button>
+            <button type="submit" formaction="/apple">Apple Library</button>
+        </form>
+    </main>
+
     <footer>
         <a href="https://openlibrary.org/">Open Library</a>
     </footer>
