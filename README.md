@@ -4,7 +4,7 @@ Used: EJS, CSS, Node.js, Express, Axios.\
 API from Open Library - it bring up data from my personal account, changes to the code need to be made to pull the information from another public account.
 
 ## Set Up In Your Local Machine
-To run this project on your local machine:
+To run this project on your local machine:\
     npm init -y\
     npm i\
     node index.js
