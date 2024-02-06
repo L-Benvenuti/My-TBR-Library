@@ -7,6 +7,6 @@ API from Open Library - it bring up data from my personal account, changes to th
 To run this project on your local machine:
     npm init -y\
     npm i\
-    node index.js\
+    node index.js
 
 It will run on port 3000, or you can change the port on index.js
